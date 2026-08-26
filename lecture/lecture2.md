@@ -14,3 +14,7 @@
 - Compute-bound为算力瓶颈，指的是computation time > communication time
 - Memory-bound为传输瓶颈，指的是communication time > computation time
 - 一般情况下都是memory bound，可以通过增加arithmetic intensity来解决，使得computation time增加，例如使用GeLU而非ReLU
+### Activation Checkpointing
+- 解决问题：transformer网络有上百层，全量保存所有层的激活值是浪费的
+- 实现方法：前向传播的时候丢弃block内部的大量激活值，反向传播的时候利用block内部的前向运算来算出中间丢弃的激活值，计算完之后再释放
+- 代价为增加计算量，但是由于是memory-bound所以说无所谓
