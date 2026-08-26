@@ -48,3 +48,7 @@ gunzip owt_valid.txt.gz
 cd ..
 ```
 
+
+
+### testing
+uv run pytest tests/test_train_bpe.py::test_train_bpe
