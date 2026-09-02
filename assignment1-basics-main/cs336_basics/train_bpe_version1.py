@@ -11,7 +11,8 @@ def run_train_bpe_(fp: str, num_words: int, special_tokens: list[str] = None, **
     # 开文件
     with open(fp, 'r', encoding='utf-8') as f:
         text = f.read()
-    # 遇到special_roken断开
+    # 遇到special_token断开
+    # chunk为每一段special_token和special_token之间的语句
     if special_tokens:
         special_pattern = "|".join(re.escape(st) for st in special_tokens)
         chunks = re.split(f"({special_pattern})", text)
